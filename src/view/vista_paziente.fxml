@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.PazienteController"
+            prefWidth="700.0" prefHeight="500.0">
+    <children>
+        <VBox spacing="20" alignment="TOP_CENTER" layoutX="50" layoutY="30" prefWidth="600">
+            <children>
+                <Label fx:id="benvenutoLabel" text="Benvenuto, Paziente!" style="-fx-font-size: 18px;" />
+                
+                <Button text="Il tuo profilo" onAction="#handleProfilo" prefWidth="300"/>
+                <Button text="Registra l'assunzione dei farmaci" onAction="#handleRegistrazioni" prefWidth="300"/>
+                <Button text="Inserisci valori glicemia" onAction="#handleInserisciGlicemia" prefWidth="300"/>
+                <Button text="Segnala sintomi" onAction="#handleSegnalaSintomi" prefWidth="300"/>
+                <Button text="Visualizza Notifiche" onAction="#handleVisualizzaAlert" prefWidth="300"/>
+                <Button text="Esci" onAction="#handleEsci" prefWidth="300"/>
+                
+                <Label text="Ricordati di registrare l'assunzione di tutti i farmaci giornalmente" style="-fx-font-size: 12px;" />
+            </children>
+            <padding>
+                <Insets top="20" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

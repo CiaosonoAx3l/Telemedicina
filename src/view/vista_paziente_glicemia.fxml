@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.PazienteController"
+            prefWidth="700.0" prefHeight="500.0">
+    <children>
+        <VBox spacing="20" alignment="TOP_CENTER" layoutX="50" layoutY="30" prefWidth="600">
+            <children>
+                <Label text="Inserisci valori glicemia:" style="-fx-font-size: 18px;" />
+                
+                 <Label text="Record Glicemie:" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                 
+                <ListView fx:id="glicemieView" prefHeight="100" />
+               
+                <TextField fx:id="fieldValore" promptText="Valore Glicemia" visible="false" managed="false"/>
+                <CheckBox fx:id="boxDopoPasto" text="dopo pasto" visible="false" managed="false"/>
+                
+                <Button fx:id="buttonInserisci" text="Insersci valore Glicemia" onAction="#handleInserisci" prefWidth="300"/>
+                <Button fx:id="buttonSalva" text="Salva" onAction="#handleSalva" prefWidth="300" visible="false" managed="false"/>
+                <Button text="Torna al Menù" onAction="#handleTorna" prefWidth="300"/>
+                
+            </children>
+            <padding>
+                <Insets top="20" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

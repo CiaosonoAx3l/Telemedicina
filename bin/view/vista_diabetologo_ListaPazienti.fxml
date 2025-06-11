@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.DiabetologoController"
+            prefWidth="700.0" prefHeight="500.0">
+    <children>
+        <VBox spacing="20" alignment="TOP_CENTER" layoutX="50" layoutY="30" prefWidth="600">
+            <padding>
+                <Insets top="20" />
+            </padding>
+            <children>
+                <Label text="Pazienti Associati" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+                <TableView fx:id="tabellaPazienti" prefHeight="400" prefWidth="600" onMouseClicked="#handlePazienteSelezionato">
+
+                    <columns>
+                        <TableColumn fx:id="colNome" text="Nome" prefWidth="200" />
+                        <TableColumn fx:id="colCognome" text="Cognome" prefWidth="200" />
+                        <TableColumn fx:id="colEmail" text="Email" prefWidth="200" />
+                    </columns>
+                </TableView>
+
+				<Button text="Aggiungi Paziente" onAction="#handleAggiungiPaziente" />
+                <Button text="Torna al menu" onAction="#handleTornaAlMenu" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

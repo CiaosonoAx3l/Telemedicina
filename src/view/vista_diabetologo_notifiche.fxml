@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.DiabetologoController">
+    <top>
+        <Label text="Notifiche dai pazienti" style="-fx-font-size: 20px; -fx-font-weight: bold;" BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+        <ListView fx:id="notificheListView" prefWidth="500" prefHeight="400"/><!--   -->
+    </center>
+
+    <bottom>
+        <Button text="Torna al Menù" onAction="#handleTorna" prefWidth="200" BorderPane.alignment="CENTER"/><!--  -->
+    </bottom>
+
+    <padding>
+        <Insets top="20" bottom="20" left="20" right="20"/>
+    </padding>
+</BorderPane>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.PazienteController"
+            prefWidth="700.0" prefHeight="500.0">
+    <children>
+        <VBox spacing="20" alignment="TOP_CENTER" layoutX="50" layoutY="30" prefWidth="600">
+            <padding>
+                <Insets top="20" />
+            </padding>
+            <children>
+                <Label text="Farmaci presi oggi:" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+                <TableView fx:id="tabellaReport" prefHeight="400" prefWidth="600">
+
+                    <columns>
+                        <TableColumn fx:id="farmacoReportCol" text="Nome Farmaco" prefWidth="299" />
+                        <TableColumn fx:id="quantitaReportCol" text="Quantita' assunta" prefWidth="299" />
+                    </columns>
+                </TableView>
+
+				<Button text="Aggiungi Farmaco" onAction="#handleAggiungiFarmaco" />
+				<Button text="Invia il report di oggi" onAction="#handleInvia" />
+				<Label fx:id="inviatoLabel" textFill="red" text=""/>
+                <Button text="Torna al menu" onAction="#handleTorna" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,20 @@
+{
+  "diabetologi": [
+    {
+      "codiceFiscale": "DBTLGI80A01H501Z",
+      "nome": "Mario",
+      "cognome": "Rossi",
+      "mail": "mario.rossi@ospedale.it",
+      "password": "diab123"
+    }
+  ],
+  "pazienti": [
+    {
+      "codiceFiscale": "PZNTMR95C03H501X",
+      "nome": "Marco",
+      "cognome": "Bianchi",
+      "mail": "marco.bianchi@email.com",
+      "password": "marco123"
+    }
+  ]
+}

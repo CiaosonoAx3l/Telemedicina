@@ -1,0 +1,78 @@
+/* Già presente */
+.root {
+    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    -fx-background-color: #f0f4f8;
+}
+
+Label {
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px; /* default uniforme */
+}
+
+/* Etichetta benvenuto */
+Label#benvenutoLabel {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #007ACC;
+}
+
+/* Etichetta promemoria finale */
+Label:last-child {
+    -fx-font-size: 13px;
+    -fx-text-fill: #555;
+    -fx-font-style: italic;
+}
+
+/* Già presenti */
+TextField, PasswordField {
+    -fx-padding: 8 12;
+    -fx-border-color: #ccc;
+	-fx-max-width: 300px;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-background-color: white;
+    -fx-font-size: 14px;
+}
+
+TextField:focused, PasswordField:focused {
+    -fx-border-color: #007ACC;
+    -fx-effect: dropshadow(gaussian, #007ACC, 5, 0.5, 0, 0);
+    -fx-background-color: white;
+    -fx-font-weight: normal;
+}
+
+Button {
+    -fx-background-color: #007ACC;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-pref-height: 40px;
+}
+
+Button:hover {
+    -fx-background-color: #005A9E;
+}
+
+VBox {
+    -fx-spacing: 15;
+    -fx-alignment: center;
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, #ccc, 10, 0.3, 0, 0);
+}
+.login-box {
+    -fx-alignment: center;
+}
+
+.login-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #007ACC;
+}
+

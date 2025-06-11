@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.PazienteController"
+            prefWidth="700.0" prefHeight="500.0">
+    <children>
+        <VBox spacing="20" alignment="TOP_CENTER" layoutX="50" layoutY="30" prefWidth="600">
+            <children>
+                <Label text="Inserisci sintomi" style="-fx-font-size: 18px;" />
+                
+                <TextField fx:id="fieldSintomo" promptText="Sintomi:" visible="true" managed="true"/>
+                
+                <Button fx:id="buttonSalvaSintomi" text="Salva" onAction="#handleSalvaSintomi" prefWidth="300" visible="true" managed="true"/>
+                 
+                <Label fx:id="inviatoLabel"  text=""/>
+                  
+                <Button text="Torna al Menù" onAction="#handleTorna" prefWidth="300"/>
+            
+                
+            </children>
+            <padding>
+                <Insets top="20" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

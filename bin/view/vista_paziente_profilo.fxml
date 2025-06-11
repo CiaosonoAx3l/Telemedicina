@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fx:id="scrollPane" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.PazienteController" prefWidth="700.0" prefHeight="500.0">
+    <content>
+        <VBox spacing="20" alignment="TOP_CENTER" prefWidth="600">
+            <padding>
+                <Insets top="20" />
+            </padding>
+
+            <Label text="Benvenuto, Paziente!" style="-fx-font-size: 18px;" />
+            <Label text="Dettagli Paziente" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Label fx:id="cfLabel" />
+            <Label fx:id="nomeLabel" />
+            <Label fx:id="cognomeLabel" />
+            <Label fx:id="emailLabel" />
+            <Label fx:id="diabetologoLabel"/>
+            <Label fx:id="diabetologoEmailLabel"/>
+            
+            <Label text="Terapia attuale" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            
+            <TableView fx:id="tabellaFarmaci" prefHeight="200.0" prefWidth="450">
+                <columns>
+                    <TableColumn fx:id="nomeCol" text="Nome" prefWidth="173"/>
+                    <TableColumn fx:id="quantitaCol" text="Quantità (mg)" prefWidth="172"/>
+                    <TableColumn fx:id="assunzioniCol" text="Assunzioni giornaliere" prefWidth="173"/>
+                </columns>
+            </TableView>
+            
+            <Label text="Indicazioni Terapia:" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <Label fx:id="IndicazioniTerapiaLabel" wrapText="true" />
+            
+            <Button text="Torna al Menù" onAction="#handleTorna" prefWidth="300"/>
+        </VBox>
+    </content>
+</ScrollPane>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<ScrollPane fx:id="scrollPane" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.DiabetologoController"
+            prefWidth="600" prefHeight="600" fitToWidth="true">
+
+    <VBox spacing="10" layoutX="30" layoutY="20" prefWidth="540">
+        <padding>
+            <Insets top="10" left="10" right="10" bottom="10"/>
+        </padding>
+        <children>
+            <Label text="Dettagli Paziente" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Label fx:id="cfLabel" />
+            <Label fx:id="nomeLabel" />
+            <Label fx:id="cognomeLabel" />
+            <Label fx:id="emailLabel" />
+
+            <Label text="Record Glicemie:" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <ListView fx:id="glicemieView" prefHeight="100" />
+
+            <ComboBox fx:id="comboPeriodo" prefWidth="150.0" />
+            <LineChart fx:id="lineChartGlicemia" prefHeight="372.0" prefWidth="572.0" title="Andamento Glicemia" legendVisible="true">
+                <xAxis>
+                    <CategoryAxis fx:id="xAxis" label="Data e Ora"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis fx:id="yAxis" label="Valore (mg/dL)"/>
+                </yAxis>
+            </LineChart>
+
+            <Label text="Descrizione Malattia:"  style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Label fx:id="malattiaLabel" wrapText="true" />
+            <TextArea fx:id="malattiaModificabile" prefRowCount="3" visible="false" managed="false" />
+            <Button fx:id="tastoModificaMalattia" text="Modifica" onAction="#handleModificaDescrizione" />
+            <Button fx:id="tastoSalvaMalattia" text="Salva" onAction="#handleSalvaDescrizione" visible="false" managed="false" />
+
+            <Label text="Terapia attuale" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <TableView fx:id="tabellaFarmaci" prefHeight="200.0" prefWidth="450">
+                <columns>
+                    <TableColumn fx:id="nomeCol" text="Nome" prefWidth="173"/>
+                    <TableColumn fx:id="quantitaCol" text="Quantità (mg)" prefWidth="172"/>
+                    <TableColumn fx:id="assunzioniCol" text="Assunzioni giornaliere" prefWidth="173"/>
+                </columns>
+            </TableView>
+
+            <TextField fx:id="nomeFarmacoModificabile" promptText="nome farmaco" visible="false" managed="false" />
+            <TextField fx:id="quantitaFarmacoModificabile" promptText="Quantità da assumere" visible="false" managed="false" />
+            <TextField fx:id="assunzioniFarmacoModificabile" promptText="Numero di Assunzioni giornaliere" visible="false" managed="false" />
+
+            <Button fx:id="bottoneAggiungiFarmaco" text="Aggiungi farmaco" onAction="#handleAggiungiFarmaco"/>
+            <Button fx:id="bottoneSalvaFarmaco" text="Salva" onAction="#handleSalvaFarmaco" visible="false" managed="false" />
+
+            <Label text="Indicazioni Terapia:"  style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Label fx:id="IndicazioniTerapiaLabel" wrapText="true" />
+            <TextArea fx:id="IndicazioniTerapiaModificabile" prefRowCount="3" visible="false" managed="false" />
+            <Button fx:id="tastoModificaIndicazioniTerapia" text="Modifica" onAction="#handleModificaIndicazioniTerapia" />
+            <Button fx:id="tastoSalvaIndicazioniTerapia" text="Salva" onAction="#handleSalvaIndicazioniTerapia" visible="false" managed="false" />
+
+            <Label text="Sintomi" />
+            <ListView fx:id="sintomiView" prefHeight="100" />
+
+            <Button text="Chiudi scheda paziente" onAction="#handleTornaAlMenu" />
+        </children>
+    </VBox>
+</ScrollPane>
+
