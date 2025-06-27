@@ -56,6 +56,9 @@
 
             <Button fx:id="bottoneAggiungiFarmaco" text="Aggiungi farmaco" onAction="#handleAggiungiFarmaco"/>
             <Button fx:id="bottoneSalvaFarmaco" text="Salva" onAction="#handleSalvaFarmaco" visible="false" managed="false" />
+            <Button fx:id="bottoneAnnullaSalvaFarmaco" text="Annulla" onAction="#handleAnnullaSalvaFarmaco" visible="false" managed="false" />
+            
+            <Button fx:id="bottoneRimuoviFarmaco" text="Rimuovi farmaco" onAction="#handleRimuoviFarmaco"/>
 
             <Label text="Indicazioni Terapia:"  style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
             <Label fx:id="IndicazioniTerapiaLabel" wrapText="true" />

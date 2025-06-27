@@ -66,6 +66,14 @@ public class DiabetologoController
             benvenutoLabel.setText("Benvenuto, Dr. " + diabetologo.getCognome() + "!");
         }
     }
+    
+    private void allerta(String contenuto)
+    {
+    	javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.WARNING);
+        alert.setHeaderText("Attenzione");
+        alert.setContentText(contenuto);
+        alert.showAndWait();
+    }
 
     @FXML
     private void handleEsci() 
@@ -406,6 +414,8 @@ public class DiabetologoController
     
     @FXML private Button bottoneAggiungiFarmaco;
     @FXML private Button bottoneSalvaFarmaco;
+    @FXML private Button bottoneAnnullaSalvaFarmaco;
+    @FXML private Button bottoneRimuoviFarmaco;
     @FXML private TextField nomeFarmacoModificabile;
 	@FXML private TextField quantitaFarmacoModificabile;
 	@FXML private TextField assunzioniFarmacoModificabile;
@@ -434,6 +444,9 @@ public class DiabetologoController
     	bottoneSalvaFarmaco.setVisible(true); //si attiva
     	bottoneSalvaFarmaco.setManaged(true);
     	
+    	bottoneAnnullaSalvaFarmaco.setVisible(true); //si attiva
+    	bottoneAnnullaSalvaFarmaco.setManaged(true);
+    	
     	nomeFarmacoModificabile.setVisible(true); //si attiva
     	nomeFarmacoModificabile.setManaged(true);
     	
@@ -442,54 +455,97 @@ public class DiabetologoController
     	
     	assunzioniFarmacoModificabile.setVisible(true); //si attiva
     	assunzioniFarmacoModificabile.setManaged(true);
+    	
+    	
+    }
+    
+    @FXML
+    private void handleRimuoviFarmaco()
+    {
+        Farmaco selezionato = tabellaFarmaci.getSelectionModel().getSelectedItem();
+        
+        if (selezionato != null && pazienteSelezionato.getTerapia() != null) 
+        {
+            Terapia terapia = pazienteSelezionato.getTerapia();
+            terapia.rimuoviFarmaco(selezionato);
+
+            popolaTabellaFarmaci();
+        }
+        else
+        {
+        	allerta("Devi selezionare un farmaco per poterlo rimuovere");
+        }
     }
     
     @FXML
     private void handleSalvaFarmaco()
     {
-    	String nomeF = nomeFarmacoModificabile.getText().trim();
-    	int quantitaF = Integer.parseInt(quantitaFarmacoModificabile.getText().trim());
-    	int assunzioniF = Integer.parseInt(assunzioniFarmacoModificabile.getText().trim());
-    	String idF = Integer.toHexString(Objects.hash(nomeF, quantitaF, assunzioniF));
-    	
-    	Farmaco nuovoF = new Farmaco(idF, nomeF, quantitaF, assunzioniF);
-    	
-    	Terapia terapiaAttuale = pazienteSelezionato.getTerapia();
-    	
-    	// Se la terapia è null, ne creo una nuova e la associo
-        if (terapiaAttuale == null) 
-        {
-        	String terapiaId = UUID.randomUUID().toString();
-            terapiaAttuale = new Terapia(terapiaId);
+        String nomeF = nomeFarmacoModificabile.getText().trim();
+        String quantitaSF = quantitaFarmacoModificabile.getText().trim();
+        String assunzioniSF = assunzioniFarmacoModificabile.getText().trim();
+
+        // Controllo campi vuoti
+        if (nomeF.isEmpty() || quantitaSF.isEmpty() || assunzioniSF.isEmpty()) {
+            allerta("Compila tutti i campi prima di salvare il farmaco.");
+            return;
+        }
+
+        int quantitaF;
+        int assunzioniF;
+
+        // Parsing sicuro
+        try {
+            quantitaF = Integer.parseInt(quantitaSF);
+            assunzioniF = Integer.parseInt(assunzioniSF);
+        } catch (NumberFormatException e) {
+            allerta("Inserisci solo numeri nei campi quantità e assunzioni.");
+            return;
+        }
+
+        String idF = Integer.toHexString(Objects.hash(nomeF, quantitaF, assunzioniF));
+        Farmaco nuovoF = new Farmaco(idF, nomeF, quantitaF, assunzioniF);
+
+        Terapia terapiaAttuale = pazienteSelezionato.getTerapia();
+        if (terapiaAttuale == null) {
+            terapiaAttuale = new Terapia(UUID.randomUUID().toString());
             pazienteSelezionato.setTerapia(terapiaAttuale);
         }
-        
-    	if(terapiaAttuale.getFarmaci().contains(nuovoF) == false)
-    	{
-        	terapiaAttuale.aggiungiFarmaco(nuovoF);
-    	}
-    	
-    	nomeFarmacoModificabile.clear();
-    	quantitaFarmacoModificabile.clear();
-    	assunzioniFarmacoModificabile.clear();
-    	popolaTabellaFarmaci();
-    	
-    	//esatto opposto di aggiungi farmaco
-    	bottoneAggiungiFarmaco.setVisible(true); //si attiva
-    	bottoneAggiungiFarmaco.setManaged(true);
 
-    	bottoneSalvaFarmaco.setVisible(false); //si disattiva
-    	bottoneSalvaFarmaco.setManaged(false);
-    	
-    	nomeFarmacoModificabile.setVisible(false); //si disattiva
-    	nomeFarmacoModificabile.setManaged(false);
-    	
-    	quantitaFarmacoModificabile.setVisible(false); //si disattiva
-    	quantitaFarmacoModificabile.setManaged(false);
-    	
-    	assunzioniFarmacoModificabile.setVisible(false); //si disattiva
-    	assunzioniFarmacoModificabile.setManaged(false);
+        if (!terapiaAttuale.getFarmaci().contains(nuovoF)) {
+            terapiaAttuale.aggiungiFarmaco(nuovoF);
+        }
+
+        handleAnnullaSalvaFarmaco();
     }
+    
+    @FXML
+    private void handleAnnullaSalvaFarmaco()
+    {
+    	nomeFarmacoModificabile.clear();
+        quantitaFarmacoModificabile.clear();
+        assunzioniFarmacoModificabile.clear();
+        popolaTabellaFarmaci();
+
+        // Nasconde i campi e ripristina i pulsanti
+        bottoneAggiungiFarmaco.setVisible(true);
+        bottoneAggiungiFarmaco.setManaged(true);
+
+        bottoneSalvaFarmaco.setVisible(false);
+        bottoneSalvaFarmaco.setManaged(false);
+        
+        bottoneAnnullaSalvaFarmaco.setVisible(false);
+    	bottoneAnnullaSalvaFarmaco.setManaged(false);
+
+        nomeFarmacoModificabile.setVisible(false);
+        nomeFarmacoModificabile.setManaged(false);
+
+        quantitaFarmacoModificabile.setVisible(false);
+        quantitaFarmacoModificabile.setManaged(false);
+
+        assunzioniFarmacoModificabile.setVisible(false);
+        assunzioniFarmacoModificabile.setManaged(false);
+    }
+
     
     //////////////////////////// FINE TABELLA FARMACI ///////////////////////////// 
     

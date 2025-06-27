@@ -103,18 +103,18 @@ public class DataUtentiLoader
 	        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	        
-	        Farmaco farmaco= new Farmaco("444", "gay", 100, 1);
+	        Farmaco farmaco= new Farmaco("444", "tachipirina", 100, 1);
 	        Terapia T = new Terapia ("1234");
 	        T.aggiungiFarmaco(farmaco);
-	        farmaco= new Farmaco("4", "gigi", 100, 2);
+	        farmaco= new Farmaco("4", "insulina", 100, 2);
 	        T.aggiungiFarmaco(farmaco);
 	        
 	        marco.setTerapia(T);
 	        
 	        
 	        
-	        marco.aggiungiSintomi("AAAAAAAAAAAAAAAAAAAAAAAAA MI ha fatto male il cazzo");
-	        marco.aggiungiSintomi("AAAAAAAAAAAAAAAAAAAAAAAAA mi facevano male anche le palle");
+	        marco.aggiungiSintomi("mi fa male la testa");
+	        marco.aggiungiSintomi("mi pulsa l'occhio");
 	        
 	        pazienti.add(marco);
 	

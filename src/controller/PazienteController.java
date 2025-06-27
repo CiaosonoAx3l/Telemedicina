@@ -380,7 +380,7 @@ public class PazienteController
     	    alert.showAndWait();
     	}
     	
-    	mostraMessaggio();
+    	mostraMessaggio("inviato con successo");
     }
     
     /////////////////////////////// FINE REPORT ///////////////////////////////////
@@ -583,16 +583,23 @@ public class PazienteController
     @FXML
     private void handleSalvaSintomi()
     {
-   	 String nuovoSintomo = fieldSintomo.getText().trim();
+     String nuovoSintomo = fieldSintomo.getText().trim();
+     
+     if(nuovoSintomo.isEmpty())
+     {
+    	 mostraMessaggio("campo vuoto");
+    	 return;
+     }
+   	 
    	 paziente.aggiungiSintomi(nuovoSintomo);
    	 fieldSintomo.clear();
-   	 mostraMessaggio();
+   	 mostraMessaggio("inviato con successo");
    	 aggiornaSintomi();
     }
 
-    private void mostraMessaggio()
+    private void mostraMessaggio(String messaggio)
     {
-    	inviatoLabel.setText("inviato con successo");
+    	inviatoLabel.setText(messaggio);
     	Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(4),evt->inviatoLabel.setText("")));
     	timeline.setCycleCount(1);
     	timeline.play();

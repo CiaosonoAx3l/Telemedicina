@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Sintomo
 {
@@ -15,7 +16,9 @@ public class Sintomo
 	
 	public String getDescrizione()
 	{
-		return this.descrizione + data.toString();
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+	    return descrizione + " (" + data.format(formatter) + ")";
 	}
+
 	
 }

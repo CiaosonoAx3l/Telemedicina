@@ -47,13 +47,23 @@ public class Glicemia
     }
 
     @Override
-    public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        return "Glicemia{" +
-                "valore=" + valore +
-                ", dopoPasto=" + dopoPasto +
-                ", dataOra=" + dataOra.format(formatter) +
-                '}';
+    public String toString() 
+    {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy 'alle' HH:mm");
+        
+        String dopoPatoODigiuno;
+        if (dopoPasto == true) 
+        {
+        	dopoPatoODigiuno = "dopo pasto";
+        } 
+        else 
+        {
+        	dopoPatoODigiuno = "a digiuno";
+        }
+
+        return "Glicemia di " + valore + " mg/dL (" + dopoPatoODigiuno + ") registrata il " + dataOra.format(formatter);
     }
+
+
 
 }
